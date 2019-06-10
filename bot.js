@@ -61,7 +61,7 @@ h(content, 'js').then(res => {
      });
        
 // PasteBin
-var pbin = require('pbin-guest');
+
        client.on("message", async message => {
      if(message.content.startsWith(prefix + "pastebin")){
  let content = '';

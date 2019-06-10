@@ -42,7 +42,7 @@ hastebin(content).then(r => {
 });
  
 // Nomsy Paste
-const h = require('nomsy-paste');
+
 client.on("message", async message => {
      if(message.content.startsWith(prefix + "nomsy")){
  let content = '';

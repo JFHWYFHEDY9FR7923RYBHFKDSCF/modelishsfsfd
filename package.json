@@ -21,8 +21,8 @@
     "simple-youtube-api": "^5.0.2",
     "youtube-info": "^1.2.0",
     "ytdl-core": "^0.21.1"
-  },
-
+    "giphy-api": "^0.22.1"
+    "hastebin-gen": "^4.4.3
   "keywords": [
     "heroku",
     "discord.js"

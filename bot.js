@@ -4,8 +4,6 @@ const client = new Discord.Client();
 
 const fs = require("fs");
 
-var jimp = require('jimp');
-
 const prefix = "#";
 
 const adminprefix = "#";

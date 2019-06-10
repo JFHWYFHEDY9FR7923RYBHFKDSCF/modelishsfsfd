@@ -11,6 +11,15 @@ const adminprefix = "#";
 client.on('ready', () => {
     console.log('I am ready!');
 });
+
+client.on('guildMemberAdd', member => {
+  
+  const channel = member.guild.channels.find(ch => ch.name === '❖-chat');
+ 
+  if (!channel) return;
+
+  channel.send(`Welcome to Model Codes, ${member}`);
+});
  
 client.on('ready', () => {
    console.log(`----------------`);

@@ -4,8 +4,6 @@ const client = new Discord.Client();
 
 const fs = require("fs");
 
-const hastebins = require('hastebin-gen');
-
 var Canvas = require('canvas');
 
 var jimp = require('jimp');

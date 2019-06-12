@@ -218,120 +218,160 @@ member.sendFile(canvas.toBuffer());
 });
  
  
-// Toxic Codes,// Toxic Codes,// Toxic Codes
-client.on('message', async message => {
-    var command = message.content.toLowerCase().split(" ")[0];
-    var prefix = '#';// Toxic Codes
-    var name = '';// Toxic Codes
-    var age = '';// Toxic Codes
-    var fromwhere = '';// Toxic Codes
-    var fa2dh = '';// Toxic Codes
-    var filter = m => m.author.id === message.author.id;// Toxic Codes
-    var subChannel = message.guild.channels.find(c => c.name=== '✽-submissions');// Toxic Codes
-   
-    if(command == prefix + 'تقديم') {// Toxic Codes
-        if(message.author.bot) return;
-        if(message.channel.type === 'dm') return;
+var guilds = {};
+client.on('message',async message => {
+ var prefix2 = '#';//البرفكس
+  if(message.content.startsWith(prefix2 + "تقديم")) {
  
-        var modRole = message.guild.roles.find(r => r.name === '● Support');// Toxic Codes
-       
-        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: | معك الرتبة');// Toxic Codes
-        if(!subChannel) return message.channel.send(':x: | يجب ان يتوفر روم اسمه `✽-التقديمات`');// Toxic Codes
-       
-        message.channel.send(':timer: | **اكتب اسمك الحقيقي الان من فضلك**').then(msgS => {
-            message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                name = collected.first().content;
+if(!message.channel.guild) return message.reply(' ');
+ 
+ 
+  let submite = message.guild.channels.find(`name`, "submissions");
+ 
+  if(!submite) return message.channel.send("❌لم اجد الروم الخاص بالتقديمات");
+ 
+    let filter = m => m.author.id === message.author.id;
+ 
+    let thisMessage;
+ 
+    let thisFalse;
+ 
+    message.channel.send('📝 **| من فضلك اكتب اسمك الأن... ✏ **').then(msg => {
+ 
+ 
+ 
+    message.channel.awaitMessages(filter, {
+ 
+      max: 1,
+ 
+      time: 90000,
+ 
+      errors: ['time']
+ 
+    })
+ 
+    .then(collected => {
+ 
+      collected.first().delete();
+ 
+      thisMessage = collected.first().content;
+ 
+      let boi;
+ 
+      msg.edit('📜 **| من فضلك اكتب عمرك  الأن... ✏ **').then(msg => {
+ 
+ 
+ 
+          message.channel.awaitMessages(filter, {
+ 
+            max: 1,
+ 
+            time: 90000,
+ 
+            errors: ['time']
+ 
+          })
+ 
+          .then(collected => {
+ 
+            collected.first().delete();
+ 
+            boi = collected.first().content;
+ 
+            let boi2;
+ 
+            msg.edit('🤵 **| من فضلك اكتب لغة البرمجة التي تعرف البرمجة بها... ✏ **').then(msg => {
+ 
+ 
+ 
+              message.channel.awaitMessages(filter, {
+ 
+                max: 1,
+ 
+                time: 90000,
+ 
+                errors: ['time']
+ 
+              })
+ 
+              .then(collected => {
+ 
                 collected.first().delete();
-                msgS.edit(':timer: | **من فضلك اكتب عمرك الان**').then(msgS => {
-                    message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                        age = collected.first().content;
-                        collected.first().delete();
-                        msgS.edit(':timer: | **من فضلك اكتب من اي بلد انت**').then(msgS => {
-                            message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                                fromwhere = collected.first().content;
-                                collected.first().delete();
-                                msgS.edit(':timer: | **من فضلك اكتب سبب تقديمك على الرتبة والمهارات اللتي لديك لتقديمها**').then(msgS => {
-                                    message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                                        fa2dh = collected.first().content;
-                                        collected.first().delete();
-                                       
-                                        let embedS = new Discord.RichEmbed()
-                                        .setAuthor(message.author.tag, message.author.avatarURL)
-                                        .setThumbnail(message.author.avatarURL)
-                                        .setDescription('**\n:no_entry: هل انت متأكد انك تريد التقديم؟**')
-                                        .setColor('GREEN')
-                                        .addField('الاسم', name, true)
-                                        .addField('العمر', age, true)
-                                        .addField('من وين', fromwhere, true)
-                                        .addField('المهارات وسبب التقديم على الرتبة', fa2dh, true)
-                                        .setTimestamp()
-                                        .setFooter(message.guild.name, message.guild.iconURL)
-                                       
-                                        msgS.delete();
-                                        message.channel.send(embedS).then(msgS => {
-                                            msgS.react('✅').then(() => msgS.react('❎'))
-                                           
-                                            let yesSure = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
-                                            let no = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
-                                           
-                                            let yesSend = msgS.createReactionCollector(yesSure);
-                                            let dontSend = msgS.createReactionCollector(no);
-                                           
-                                            yesSend.on('collect', r => {
-                                                msgS.delete();
-                                                message.channel.send(':white_check_mark: | تم تقديم طلبك بنجاح انتظر النتيجة في روم support-accept').then(msg => msg.delete(5000));
-                                               
-                                                let subMsg = new Discord.RichEmbed()
-                                                .setAuthor(message.author.tag, message.author.avatarURL)
-                                                .setColor('GREEN')
-                                                .setThumbnail(message.author.avatarURL)
-                                                .addField('الاسم', name)
-                                                .addField('العمر', age)
-                                                .addField('من وين', fromwhere)
-                                                .addField('لماذا يريد التقديم', fa2dh)
-                                                .addField('حسابه', message.author)
-                                                .addField('ايدي حسابه', message.author.id, true)
-                                               
-                                                subChannel.send(subMsg).then(msgS => {
-                                                    msgS.react('✅').then(() => msgS.react('❎'))
-                                                   
-                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === 
-                                                        ('444126346676011028', '489250265485279243');
-                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === 
-                                                        ('444126346676011028', '489250265485279243');
-                                                 
  
-                                                    let acceptRe = msgS.createReactionCollector(accept);
-                                                    let noAcceptRe = msgS.createReactionCollector(noAccept);
-                                                   
-                                                    acceptRe.on('collect', r => {
-                                                        msgS.delete();
-                                                        message.author.send(`:white_check_mark: | تم قبولك بسيرفر **${message.guild.name}**`);
-                                                        message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === '✽-القبول-الرفض').send(`:white_check_mark: | تم قبولك [ <@${message.author.id}> ]`);
-                                                    }).catch();
-                                                    noAcceptRe.on('collect', r => {
-                                                        msgS.delete();
-                                                        message.author.send(`:x: | تم رفضك بسيرفر **${message.guild.name}**`);
-                                                        message.guild.channels.find(r => r.name === '✽-القبول-الرفض').send(`:x: | تم رفضك [ <@${message.author.id}> ]`);
-                                                    }).catch();
-                                                })
-                                            });// Toxic Codes
-                                            dontSend.on('collect', r => {
-                                                msgS.delete();
-                                                message.channel.send(':x: | تم الغاء تقديمك');// Toxic Codes
-                                            });
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    }
+              boi2 = collected.first().content;
+ 
+      msg.edit('🛡 **| [ هل انت متأكد من تقديمك؟ | [ نعم ] او [ لا**');
+ 
+ message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
+ 
+        max: 1,
+ 
+        time: 90000,
+ 
+        errors: ['time']
+ 
+      })
+ 
+      .then(collected => {
+ 
+        if(collected.first().content === 'لا') {
+ 
+          msg.delete();
+ 
+          message.delete();
+ 
+          thisFalse = false;
+ 
+        }
+ 
+        if(collected.first().content === 'نعم') {
+ 
+          if(thisFalse === false) return;
+ 
+          msg.edit('🕊 **| Done ✅, تم بنجاح نشر تقديم في روم التقديمات**');
+ 
+          collected.first().delete();
+ 
+          submite.send(`@everyone | @here
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+**[ ${message.guild.name}:arrow_down: ] Submite⬇**
+ 
+[**اسم المقدم**]:
+${thisMessage}
+ 
+[**عمره**]:
+${boi}
+ 
+[**اللغة الخاص بالبرمحة**]:
+${boi2}
+ 
+[**تم التقديم بواسطة**]:
+${message.author}
+ 
+[**ايدي المقدم**]:
+${message.author.id}`);
+ 
+        }
+ 
+      }
+ 
+  );
+ 
 });
+ 
+    });
+ 
+  }
+ 
+    );
+ 
+  });
+ 
+}
+ 
+);
+ 
+    })}});
  
 client.on("message", msg => {
     if(msg.author.bot) return;

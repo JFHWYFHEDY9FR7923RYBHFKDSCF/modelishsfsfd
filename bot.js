@@ -1863,7 +1863,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '• Support', '• Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '● Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  

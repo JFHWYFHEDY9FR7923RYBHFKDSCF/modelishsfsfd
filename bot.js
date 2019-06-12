@@ -1715,7 +1715,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '● Support', '• Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '• Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
@@ -1863,7 +1863,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '● Support', '• Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '• Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
@@ -2229,7 +2229,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '• Support', '● Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '• Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
@@ -2378,7 +2378,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '• Support', '● Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '• Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
@@ -2555,7 +2555,7 @@ if(!message.channel.guild) return message.reply(' ');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
-  let jscodes = message.guild.channels.find(`name`, "❖-discord-php");
+  let jscodes = message.guild.channels.find(`name`, "❖-web-php");
  
   if(!jscodes) return message.channel.send("❌لم اجد الروم الخاص بنشر الاكواد");
  

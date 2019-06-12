@@ -233,7 +233,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '• Support');// Toxic Codes
+        var modRole = message.guild.roles.find(r => r.name === '● Support');// Toxic Codes
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: | معك الرتبة');// Toxic Codes
         if(!subChannel) return message.channel.send(':x: | يجب ان يتوفر روم اسمه `✽-التقديمات`');// Toxic Codes
@@ -356,7 +356,7 @@ if(!msg.guild.member(msg.author).hasPermission("MANAGE_ROLES")) return;
       ac.send(`** تم بنجاح قبولك    ${aUser}**`)
  
       msg.delete().catch(O_o=>{});
-      var role = msg.guild.roles.find(`name`, '• Support');
+      var role = msg.guild.roles.find(`name`, '● Support');
       var role2 = msg.guild.roles.find(`name`, '• Support Plus');
       var role3 = msg.guild.roles.find(`name`, '• Support Master');
       if(!role) return msg.guild.channel.send("Could't find `اسم رتبت السبورت` role.");
@@ -418,7 +418,7 @@ if(!msg.guild.member(msg.author).hasPermission("MANAGE_ROLES")) return;
      
  
       msg.delete().catch(O_o=>{});
-      var role = msg.guild.roles.find(`name`, '• Support');
+      var role = msg.guild.roles.find(`name`, '● Support');
       var role2 = msg.guild.roles.find(`name`, '• Support Plus');
       var role3 = msg.guild.roles.find(`name`, '• Support Master');
       if(!role) return msg.guild.channel.send("Could't find `اسم رتبت السبورت` role.");
@@ -1715,7 +1715,7 @@ client.on('message',async message => {
  
 if(!message.channel.guild) return message.reply(' ');
  
-  let rank = message.guild.member(message.author).roles.find('name', '• Support', '● Support Plus');
+  let rank = message.guild.member(message.author).roles.find('name', '● Support', '• Support Plus');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
@@ -1867,7 +1867,7 @@ if(!message.channel.guild) return message.reply(' ');
  
   if (!rank) return message.channel.send('🛑 **| يجب ان تمتلك رتبة سبورت لأستخدام هذا الأمر.**');
  
-  let jscodes = message.guild.channels.find(`name`, "❖-discord-html");
+  let jscodes = message.guild.channels.find(`name`, "❖-web-html");
  
   if(!jscodes) return message.channel.send("❌لم اجد الروم الخاص بنشر الاكواد");
  

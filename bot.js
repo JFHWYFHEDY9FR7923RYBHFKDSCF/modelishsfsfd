@@ -561,17 +561,7 @@ client.on('message', msg => {
    
   })
  
-client.on ("guildMemberAdd", member => {
- 
-   var role = member.guild.roles.find ("name", "● Members");
-   member.addRole (role);
- 
-})
- 
-client.on ("guildMemberRemove", member => {
-   
-})
- 
+
  
 
 
